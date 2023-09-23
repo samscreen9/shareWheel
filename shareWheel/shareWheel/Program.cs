@@ -18,6 +18,17 @@ builder.Services.AddDbContext<AppDbContext>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 	.AddEntityFrameworkStores<AppDbContext>()
 	.AddDefaultTokenProviders();
+//password config
+builder.Services.Configure<IdentityOptions>(options =>
+{
+	// Default Password settings.
+	options.Password.RequireDigit = false;
+	options.Password.RequireLowercase = false;
+	options.Password.RequireNonAlphanumeric = false;
+	options.Password.RequireUppercase = false;
+	options.Password.RequiredLength = 4;
+	options.Password.RequiredUniqueChars = 1;
+});
 
 // Adding Authentication  
 builder.Services.AddAuthentication(options =>

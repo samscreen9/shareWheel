@@ -4,6 +4,7 @@ namespace shareWheel.DbConnection
 {
 	public class ApplicationUser:IdentityUser
 	{
-
+		
+		public string? city { get; set; }
 	}
 }
