@@ -74,19 +74,35 @@ namespace JWTAuthentication.Controllers
 		[Route("register")]
 		public async Task<IActionResult> Register([FromBody] RegisterModel model)
 		{
-			var userExists = await userManager.FindByNameAsync(model.Username);
-			if (userExists != null)
+
+
+			var EmailExists = await userManager.FindByEmailAsync(model.Email);
+			var userExists = await userManager.FindByNameAsync(model.Email.Substring(0, model.Email.LastIndexOf('@')));
+			if (userExists != null || EmailExists != null)
 				return StatusCode(StatusCodes.Status500InternalServerError, new response { Status = "Error", Message = "User already exists!" });
 
 			ApplicationUser user = new ApplicationUser()
 			{
 				Email = model.Email,
 				SecurityStamp = Guid.NewGuid().ToString(),
-				UserName = model.Username
+				UserName = model.Email.Substring(0, model.Email.LastIndexOf('@')),
+				PhoneNumber = model.Phone,
+				firstname = model.firstname,
+				lastname = model.lastname
+				//city=model.
 			};
 			var result = await userManager.CreateAsync(user, model.Password);
+			if (await roleManager.RoleExistsAsync("User"))
+			{
+				await userManager.AddToRoleAsync(user, "User");
+			}
+
+
 			if (!result.Succeeded)
 				return StatusCode(StatusCodes.Status500InternalServerError, new response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
+			//to create deafult admin
+			if (user.UserName == "user0" || user.UserName == "user10" || user.UserName == "user11")
+			{ await userManager.AddToRoleAsync(user, "User"); }
 
 			return Ok(new response { Status = "Success", Message = "User created successfully!" });
 		}
