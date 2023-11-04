@@ -18,6 +18,17 @@ builder.Services.AddDbContext<AppDbContext>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 	.AddEntityFrameworkStores<AppDbContext>()
 	.AddDefaultTokenProviders();
+//password config
+builder.Services.Configure<IdentityOptions>(options =>
+{
+	// Default Password settings.
+	options.Password.RequireDigit = false;
+	options.Password.RequireLowercase = false;
+	options.Password.RequireNonAlphanumeric = false;
+	options.Password.RequireUppercase = false;
+	options.Password.RequiredLength = 4;
+	options.Password.RequiredUniqueChars = 1;
+});
 
 // Adding Authentication  
 builder.Services.AddAuthentication(options =>
@@ -44,6 +55,11 @@ builder.Services.AddAuthentication(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//services cors
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+	builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
@@ -56,7 +72,8 @@ if (app.Environment.IsDevelopment())
 		c.SwaggerEndpoint("/swagger/v1/swagger.json", "shareWheel V1");
 	});
 }
-
+app.UseCors("corsapp");
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 

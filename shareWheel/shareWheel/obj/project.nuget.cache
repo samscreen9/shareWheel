@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m1xpqiFXb9qouNU8/xUDmEDvYVA3+xmttJsKEHu2ruhBZWbLZhvOPhS3t6bcL9QvbNaBZzhKZz5tTIQcDYU+Iw==",
+  "dgSpecHash": "WFIEzTnpLLPzmw99bB9lFIAmC8UFKri0QA1BB+cppx4E0jEnTmQPyL8ndcMJXZYbPXudWwDZl9Pvi/xfxnTtTw==",
   "success": true,
-  "projectFilePath": "D:\\git\\shareWheel\\shareWheel\\shareWheel.csproj",
+  "projectFilePath": "D:\\git\\shareWheel\\shareWheel\\shareWheel\\shareWheel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\levem\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\levem\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

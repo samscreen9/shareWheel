@@ -3531,11 +3531,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\git\\shareWheel\\shareWheel\\shareWheel.csproj",
+      "projectUniqueName": "D:\\git\\shareWheel\\shareWheel\\shareWheel\\shareWheel.csproj",
       "projectName": "shareWheel",
-      "projectPath": "D:\\git\\shareWheel\\shareWheel\\shareWheel.csproj",
+      "projectPath": "D:\\git\\shareWheel\\shareWheel\\shareWheel\\shareWheel.csproj",
       "packagesPath": "C:\\Users\\levem\\.nuget\\packages\\",
-      "outputPath": "D:\\git\\shareWheel\\shareWheel\\obj\\",
+      "outputPath": "D:\\git\\shareWheel\\shareWheel\\shareWheel\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
